@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-top: 136px;
+  
+  }
+
+  body{
+    background: url('src/assets/food1.jpg') no-repeat ; 
+        background-attachment: fixed;
+        background-size:cover;
+        background-size: 100%  100%;
+        width:100%;
+        margin-top: -10px;
+        margin-bottom: -30px;
+        margin-left: -10px;
+        margin-right: -40px;
+        min-height: 100vh; 
+ 
+  }

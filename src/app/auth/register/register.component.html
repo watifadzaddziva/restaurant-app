@@ -1,0 +1,69 @@
+<body>
+<div class="card" >
+<p-card  [style]="{
+    borderRadius: '15px', 
+    width: '500px', 
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+    color: 'black'}">
+<div class="p-fluid grid"><h1>Registration</h1>
+    <form [formGroup]="registration" (ngSubmit)="submitForm()">
+        <div >
+            <span class="p-float-label">
+                <input formControlName="firstName"  type="text" id="firstName" pInputText > 
+                <label for="firstName">First Name</label>
+            </span>
+        </div><br>
+        <div >
+            <span class="p-float-label">
+                <input formControlName="lastName"  type="text" id="lastName" pInputText > 
+                <label for="lastName">Last Name</label>
+            </span>
+        </div>
+   <br>
+    <div >
+        <span class="p-float-label">
+            <input formControlName="userName"  type="text" id="userName" pInputText > 
+            <label for="userName">Username</label>
+        </span>
+    </div>
+   <br>
+    <div >
+        <span class="p-float-label">
+            <input formControlName="email" type="email" id="email" pInputText > 
+            <label for="email">Email</label>
+        </span>
+    </div>
+   <br>
+    <div >
+        <span class="p-float-label">
+            <p-password  formControlName="password" inputId="password" [toggleMask]="true" ></p-password>
+            <label for="password">Password</label>
+        </span>
+    </div><br>
+    <div >
+        <span class="p-float-label">
+            <p-password formControlName="confirmPassword"  [toggleMask]="true" inputId="Confirmpassword" ></p-password>
+            <label for="Confirmpassword">Confirm Password</label>
+        </span>
+    </div>
+
+<div>
+    <h3 style="color:white">Register As </h3>
+    <label style="color:white; ">
+        <input  type="radio" name="paymentType"
+          value="PayPal" required>Restaurant
+  </label>&nbsp;&nbsp;
+  
+  <label style="color:white">
+        <input type="radio"  name="paymentType"
+        value="Credit" required> Customer
+  </label>
+</div>
+</form>
+</div><br>
+<button pButton pRipple type="submit" [disabled]="registration.invalid" label="Register" class="p-button-rounded"></button>&nbsp;
+<button pButton pRipple type="button" label="Cancel" class="p-button-rounded p-button-danger"></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button pButton pRipple type="button" routerLink="/login"   class="p-button-text"><b> Login</b></button>
+</p-card>   
+</div><br><br>
+</body>

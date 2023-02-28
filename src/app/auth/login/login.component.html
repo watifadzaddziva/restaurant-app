@@ -1,0 +1,30 @@
+<body>
+<div class="card" >
+    <p-card [style]="{
+        borderRadius: '15px', 
+        width: '500px', 
+        backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+        color: 'black'}">
+    <div class="p-fluid grid"><h1>Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div >
+            <span class="p-float-label">
+                <input  type="text" id="inputtext" pInputText > 
+                <label for="inputtext">Username</label>
+            </span>
+        </div><br>
+        <br> 
+        <div >
+            <span class="p-float-label">
+                <p-password  inputId="password" [toggleMask]="true" ></p-password>
+                <label for="password">Password</label>
+            </span>
+        </div>
+    </form>
+    </div><br>
+    <button pButton pRipple type="submit" label="Login" class="p-button-rounded"></button>&nbsp;
+    <button pButton pRipple type="button" label="Cancel" class="p-button-rounded p-button-danger"></button>
+    <button pButton pRipple type="button" routerLink="/register" labe="No Account?"   class="p-button-text"><b> Register</b></button>
+    </p-card>   
+    </div>
+</body>

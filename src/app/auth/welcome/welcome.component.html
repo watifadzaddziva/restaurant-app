@@ -1,0 +1,43 @@
+
+<div class="container">
+    <p-menubar >
+        <button pButton pRipple type="button"   class="p-button-text"><b> RESTAURANTS</b></button>&nbsp;
+        <button pButton pRipple type="button"  routerLink="/home"  class="p-button-text"><b> HOME</b></button>&nbsp;
+    <button pButton pRipple type="button"  (click)="login()"  class="p-button-text"><b> LOGIN</b></button>&nbsp;
+    <button pButton pRipple type="button" (click)="register()" class="p-button-text"><b>REGISTER</b></button>   
+    </p-menubar>
+</div>
+<!-- pi-home -->
+<body>
+<div class="Section_top">
+    <div class="content">
+        <div class="left">
+        <h1 style="color:brown">Welcome to Best Foods In The City</h1>
+        </div>
+    </div>
+</div>
+
+</body><br><br><br>
+<div class="row">
+    <div class="col">
+        <p-card  [style]="{'width':'97%' ,'height':'60%'}">
+            <ng-template pTemplate="header">
+                <img src="assets/food1.jpg">
+            </ng-template>
+            Name: Beef Steak with Fried Chips<br>
+            Price: $5.00
+        </p-card>
+    </div>
+   
+    <div class="col">
+        <p-card  [style]="{'width': '97%','height':'50%'}">
+            <ng-template pTemplate="header">
+                <img src="assets/food6.jpg">
+            </ng-template>
+            Name: Beef Steak <br>
+            Price: $3.40
+        </p-card>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
