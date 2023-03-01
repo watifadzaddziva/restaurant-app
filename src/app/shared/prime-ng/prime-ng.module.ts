@@ -18,7 +18,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FileUploadModule} from 'primeng/fileupload';
 import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
-
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -46,7 +46,8 @@ import {DialogModule} from 'primeng/dialog';
     InputTextModule,
     FileUploadModule,
     DataViewModule,
-    DialogModule
+    DialogModule,
+    ToastModule
 
 
     

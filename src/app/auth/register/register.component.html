@@ -6,64 +6,64 @@
     backgroundColor: 'rgba(255, 255, 255, 0.2)', 
     color: 'black'}">
 <div class="p-fluid grid"><h1>Registration</h1>
-    <form [formGroup]="registration" (ngSubmit)="submitForm()">
+    <form [formGroup]='registration' (ngSubmit)='submitForm()'>
         <div >
             <span class="p-float-label">
-                <input formControlName="firstName"  type="text" id="firstName" pInputText > 
-                <label for="firstName">First Name</label>
+                <input formControlName="name"  type="text" pInputText class="form-control" > 
+                <label for="name">First Name</label>
             </span>
         </div><br>
         <div >
             <span class="p-float-label">
-                <input formControlName="lastName"  type="text" id="lastName" pInputText > 
-                <label for="lastName">Last Name</label>
+                <input formControlName="lastname"  type="text" pInputText class="form-control"> 
+                <label for="lastname">Last Name</label>
             </span>
         </div>
    <br>
     <div >
         <span class="p-float-label">
-            <input formControlName="userName"  type="text" id="userName" pInputText > 
-            <label for="userName">Username</label>
+            <input formControlName="username"  type="text"  pInputText class="form-control"> 
+            <label for="username">Username</label>
         </span>
     </div>
    <br>
     <div >
         <span class="p-float-label">
-            <input formControlName="email" type="email" id="email" pInputText > 
+            <input formControlName="email" type="email"  pInputText class="form-control"> 
             <label for="email">Email</label>
         </span>
     </div>
    <br>
     <div >
         <span class="p-float-label">
-            <p-password  formControlName="password" inputId="password" [toggleMask]="true" ></p-password>
+            <p-password  formControlName="password" inputId="password" [toggleMask]="true" class="form-control" ></p-password>
             <label for="password">Password</label>
         </span>
     </div><br>
-    <div >
+    <!-- <div >
         <span class="p-float-label">
             <p-password formControlName="confirmPassword"  [toggleMask]="true" inputId="Confirmpassword" ></p-password>
             <label for="Confirmpassword">Confirm Password</label>
         </span>
-    </div>
+    </div> -->
 
 <div>
-    <h3 style="color:white">Register As </h3>
-    <label style="color:white; ">
-        <input  type="radio" name="paymentType"
-          value="PayPal" required>Restaurant
+    <h3 style="color:black">Register As </h3>
+    <label style="color:black; ">
+        <input  type="radio" formControlName="userType" class="form-control"
+          value="Restaurant" required>Restaurant
   </label>&nbsp;&nbsp;
   
-  <label style="color:white">
-        <input type="radio"  name="paymentType"
-        value="Credit" required> Customer
+  <label style="color:black">
+        <input type="radio"  formControlName="userType" class="form-control"
+        value="Customer" required> Customer
   </label>
-</div>
+</div> <br>
+<button pButton pRipple type="submit" label="Register" [disabled]="registration.invalid"   ></button>
+<p>
+<button pButton pRipple type="button" routerLink="/login"  label=" Back To Login"  class="p-button-text"><b></b></button></p>
 </form>
-</div><br>
-<button pButton pRipple type="submit" [disabled]="registration.invalid" label="Register" class="p-button-rounded"></button>&nbsp;
-<button pButton pRipple type="button" label="Cancel" class="p-button-rounded p-button-danger"></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button pButton pRipple type="button" routerLink="/login"   class="p-button-text"><b> Login</b></button>
+</div>
 </p-card>   
 </div><br><br>
 </body>

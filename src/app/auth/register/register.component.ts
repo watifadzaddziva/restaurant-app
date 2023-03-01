@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -10,31 +10,31 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registration!: FormGroup
+  // registration= new FormGroup({})
 
   constructor(private fb : FormBuilder,private router: Router,
     private authService : AuthService){}
 
-
+    registration= new FormGroup({
+      name:new FormControl(''),
+      lastname:new FormControl('') ,
+      username:new FormControl('') ,
+      email:new FormControl('') ,
+      password:new FormControl('') ,
+      // confirmPassword:['', [Validators.required]] ,
+      userType:new FormControl('') ,
+  
+     })
+  
   ngOnInit(): void {
-  this.registration= this.fb.group({
-    firstName:['', [Validators.required]] ,
-    lastName:['', [Validators.required]] ,
-    userName:['', [Validators.required]] ,
-    email:['', [Validators.required]] ,
-    password:['', [Validators.required]] ,
-    confirmPassword:['', [Validators.required]] ,
-    usertype:['', [Validators.required]] ,
-
-   })
   }
 
   submitForm(){
+    console.log(this.registration.value)
     if (this.registration.valid) {
       this.authService.registerUserFromServer(this.registration.value).subscribe((res)=>{
-        this.router.navigate(['/login'])
-
-        
+        console.log(this.registration.value)
+        this.router.navigate(['/login'])   
       })
       
     } else {
