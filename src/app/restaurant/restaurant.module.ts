@@ -8,6 +8,7 @@ import { AddRestaurantComponent } from './components/add-restaurant/add-restaura
 import { PrimeNgModule } from '../shared/prime-ng/prime-ng.module';
 import { MessageService } from 'primeng/api';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RestaurantRoutingModule,
     PrimeNgModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [MessageService]

@@ -5,24 +5,28 @@
         backgroundColor: 'rgba(255, 255, 255, 0.2)', 
         color: 'black'}">
     <div class="p-fluid grid"><h1>Register Your Restaurant</h1>
-        <form >
+        <form  [formGroup]="restaurantForm" (ngSubmit)="submit()">
             <div class="field">
                 <label for="name" class="block">Name</label>
-                <input id="name" type="name"  pInputText  />
+                <input formControlName="name" type="text"  pInputText  />
             </div><br>
             <div class="field">
                 <label for="address" class="block">Address</label>
-                <input id="address" type="address"  pInputText  />
+                <input formControlName="address" type="text"  pInputText  />
+            </div>
+            <div class="field">
+                <label for="restaurantId" class="block">Restaurant Owner</label>
+                <input formControlName="restaurantId" type="text"  pInputText  />
             </div>
 <br>
             <div class="field">
-                <label for="contact" class="block">Contact Details</label>
-                <input id="contact" type="contact"  pInputText  />
+                <label for="contactDetails" class="block">Contact Details</label>
+                <input  formControlName="contactDetails" type="text"  pInputText  />
             </div>
 <br>
             <div >
-                <label for="address" class="block">Logo</label>
-                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+                <label for="logoUrl" class="block">Logo</label>
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" formControlName="logoUrl"
                 accept="image/*" >
                 <ng-template pTemplate="content">
                     <ul *ngIf="uploadedFiles.length">
@@ -31,10 +35,10 @@
                 </ng-template>
         </p-fileUpload>
             </div>
+            <button pButton pRipple type="submit" label="Create" class="p-button-rounded"></button>&nbsp;
+            <button pButton pRipple type="button" routerLink="/home" labe="No Account?"   class="p-button-text"><b> Home</b></button>
     </form>
     </div><br>
-    <button pButton pRipple type="submit" label="Add" class="p-button-rounded"></button>&nbsp;
-    <button pButton pRipple type="button" label="Cancel" class="p-button-rounded p-button-danger"></button>
-    <button pButton pRipple type="button" routerLink="/home" labe="No Account?"   class="p-button-text"><b> Home</b></button>
+   
     </p-card>   
     </div>
