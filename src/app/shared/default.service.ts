@@ -16,4 +16,8 @@ export class DefaultService {
     return this.http.post<any>(`${this.baseUrl}/restaurant/create-restaurant`,user)
  
 }
+
+createMenu(data: any): Observable<any>{
+return this.http.post<any>(`${this.baseUrl}/restaurant/create-menu`, data)
+}
 }

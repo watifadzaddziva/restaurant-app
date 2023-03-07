@@ -1,26 +1,28 @@
 <p-button [style]="{
-    float:'right'
+    float:'right',
+    backgroundColor:'#DC8459',
+    border:'0cm'
 }" (click)="showPositionDialog('top')" icon="pi pi-plus" label="Add Food Item"></p-button>
-<p-dialog header="Add Food Items" [(visible)]="displayPosition"  [style]="{width: '40vw'}">
+<p-dialog header="Add Food Item" [(visible)]="displayPosition"  [style]="{width: '40vw'}">
     <div class="card" >
         <div class="p-fluid grid">
-            <form [formGroup]="addForm" >
+            <form [formGroup]="addForm"  (ngSubmit)="submit()">
                 <div class="field">
-                    <label for="name" class="block">Name</label>
-                    <input id="name" type="name"  pInputText  />
+                    <label for="name" class="block">Dish Name</label>
+                    <input formControlName="dishName"  type="text"  pInputText  />
                 </div><br>
                 <div class="field">
                     <label for="currency-us">Price</label>
-                    <p-inputNumber  [showButtons]="true" inputId="currency-us" mode="currency" currency="USD" locale="en-US">
+                    <p-inputNumber formControlName="price"  [showButtons]="true" inputId="currency-us" mode="currency" currency="USD" locale="en-US">
                     </p-inputNumber>
                 </div><br>
                 <div class="field">
-                    <label for="availability" class="block">Availability</label>
-                    <p-dropdown [options]="items"   placeholder="Select status" optionLabel="name" [showClear]="true"></p-dropdown>
+                    <label for="restaurantId" class="block">Restaurant</label>
+                    <input formControlName="restaurantId" type="number"  pInputText  />
                 </div><br>
                 <div >
                     <label for="address" class="block">Image</label>
-                    <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+                    <p-fileUpload name="demo[]" url="./upload.php" formControlName="imageUrl" (onUpload)="onUpload($event)"
                     accept="image/*" >
                     <ng-template pTemplate="content">
                         <ul *ngIf="uploadedFiles.length">
@@ -28,18 +30,13 @@
                         </ul>
                     </ng-template>
             </p-fileUpload>
-                </div>
+                </div><br>
+                <button pButton pRipple type="submit" label="Add" ></button>&nbsp;
         </form>
         </div><br>
-        <button pButton pRipple type="submit" label="Add" class="p-button-rounded"></button>&nbsp;
-        <button pButton pRipple type="button" label="Cancel" class="p-button-rounded p-button-danger"></button>
-        <button pButton pRipple type="button" routerLink="/home" labe="No Account?"   class="p-button-text"><b> Home</b></button>
+        <button pButton pRipple type="button" routerLink="/"   class="p-button-text"><b> Home</b></button>
         </div>
-    
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="displayPosition=false" label="Ok" styleClass="p-button-text"></p-button>
-    </ng-template>
+
 </p-dialog>
 
 
-<!-- food table -->

@@ -11,7 +11,8 @@ import { DefaultService } from 'src/app/shared/default.service';
 })
 export class AddRestaurantComponent implements OnInit {
   uploadedFiles: any[] = [];
-  restaurantForm!: FormGroup
+  restaurantForm!: FormGroup;
+  baseUrl= 'http://192.168.10.146:8100/restaurant/upload';
 
   constructor(private messageService: MessageService,
     private router: Router,private defaultService :DefaultService,private fb : FormBuilder) {}
@@ -21,24 +22,47 @@ export class AddRestaurantComponent implements OnInit {
       name: ['', [Validators.required]],
       logoUrl: ['', [Validators.required]],
       restaurantId: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      contactDetails: ['', [Validators.required]]
+      contactDetails:['', [Validators.required]], 
+      address:['', [Validators.required]],
 
     })
   }
 
 
 submit(){
-  this.defaultService.createRestaurant(this.restaurantForm.value).subscribe((res)=>{
-console.log(res)
-  })
+  if(this.restaurantForm.invalid){
+    this.defaultService.createRestaurant(this.restaurantForm.value).subscribe((res)=>{
+      console.log(res)
+      this.router.navigate(['home'])
+        },
+        err=>{
+         this.showError();
+        } )
+      }
 }
 
-    onUpload(event: any) {
-        for(let file of event.files) {
-            this.uploadedFiles.push(file);
-        }
+    onUpload(e: any) {
+      if (e.type == 'success' && e.file.status == 'done')
+      if (e.file.response)
+        this.restaurantForm.value.logoUrl = {
+          ...this.restaurantForm.value.logoUrl ,
+          productImageId: e.file.response.id,
+          success: true,
+          logoUrl: e.file.response.location
+        };
+      else this.restaurantForm.value.logoUrl  = { ...this.restaurantForm.value.logoUrl , success: false };
+  }
 
+  myUploader(event: any) {
+    console.log("onUpload() START");
+    for(let file of event.files) {
+      console.log("FILE TO BE UPLOADED: ", file);
+      this.uploadedFiles.push(file);
     }
+  }
 
+
+  showError() {
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+}
 }

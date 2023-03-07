@@ -1,1 +1,89 @@
-<p>fooditems works!</p>
+<div><br>
+<app-set-food-item></app-set-food-item>
+</div>
+
+<br><br><br>
+<h3 class="text-center" style="color:brown">All Dishies</h3><br>
+<div class="container">
+    <div class="row justify-content-start">
+      <div class="col-4">
+        <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="assets/food3.jpg" routerLink="/" style="width:350px;height: 250px;">
+            </ng-template>
+            <p>DishName:Medium Platter <br>
+                Price: $23.40</p>
+            <ng-template pTemplate="footer">
+                <p-button label="Add To Cart" icon="pi pi-cart-plus" [style]="{ 'border':'0cm'}"></p-button>
+                <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+            </ng-template>
+        </p-card>
+      </div>
+      <div class="col-4">
+        <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="assets/food1.jpg" style="width:350px;height: 250px;">
+            </ng-template>
+            <p>DishName:Beak Steak and Chips <br>
+                Price: $5.00</p>  <ng-template pTemplate="footer">
+                <p-button label="Add To Cart" icon="pi pi-cart-plus" [style]="{'border':'0cm'}"></p-button>
+                <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+            </ng-template>
+        </p-card>
+      </div>
+
+      <div class="col-4">
+        <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="assets/food5.jpg" style="width:350px;height: 250px;">
+            </ng-template>
+            <p>DishName:Fried Rice and Garden Salad <br>
+                Price: $3.40</p>  <ng-template pTemplate="footer">
+                <p-button label="Add To Cart" icon="pi pi-cart-plus" [style]="{'border':'0cm'}"></p-button>
+                <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+            </ng-template>
+        </p-card>
+      </div>
+    </div>
+    <br><br>
+    <div class="row justify-content-start">
+        <div class="col-4">
+          <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+              <ng-template pTemplate="header">
+                  <img alt="Card" src="assets/food6.jpg" style="width:350px;height: 250px;">
+              </ng-template>
+              <p>DishName:roasted Beef <br>
+                Price: $10.50</p>   <ng-template pTemplate="footer">
+                  <p-button label="Add To Cart" icon="pi pi-cart-plus" [style]="{ 'border':'0cm'}"></p-button>
+                  <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+                </ng-template>
+          </p-card>
+        </div>
+        <div class="col-4">
+          <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+              <ng-template pTemplate="header">
+                  <img alt="Card" src="assets/food7.jpg" style="width:350px ;height: 250px;">
+              </ng-template>
+              <p>DishName:Fried Rice and Medium Russian <br>
+                Price: $7.40</p>    <ng-template pTemplate="footer">
+                  <p-button label="Add To Cart" icon="pi pi-cart-plus" [style]="{ 'border':'0cm'}"></p-button>
+                  <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+                </ng-template>
+          </p-card>
+        </div>
+  
+        <div class="col-4">
+          <p-card header=""  [style]="{width: '360px'}" styleClass="p-card-shadow">
+              <ng-template pTemplate="header">
+                  <img alt="Card" src="assets/food.jpg" style="width:350px;height: 250px;">
+              </ng-template>
+              <p>DishName:Full Platter <br>
+                Price: $30.00</p>    <ng-template pTemplate="footer">
+                  <p-button label="Add To Cart" icon="pi pi-cart-plus" styleClass="p-button-brown" [style]="{'border':'0cm'}"></p-button>
+                  <p-button label="Delete" icon="pi pi-times" [style]="{'margin-left': '.5em','backgroundColor':'#DC8459','border':'0cm'}"></p-button>
+                </ng-template>
+          </p-card>
+        </div>
+      </div>
+      
+  </div>

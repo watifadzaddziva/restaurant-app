@@ -1,31 +1,26 @@
-.card{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding-top: 30px; */
-  /* padding-bottom: 40px; */
-  /* margin-top: 20px; */
+body{
+  background: url('src/assets/food1.jpg') no-repeat ; 
+      background-attachment: fixed;
+      background-size:cover;
+      background-size: 100%  100%;
+      min-height: 100vh; 
+
 }
 
+.Section_top{
+  width: 100%;
+  height: 100%;
+  color: 'rgba(255, 255, 255, 0.2)';
+  position: fixed;
+  text-align: center;
+  display: flex;
+  /* padding-top: 100px; */
+  justify-content: center;
+}
+.content{
+  position: absolute;
+  color: 'rgba(255, 255, 255, 0.2)',
+ 
+}
 
-
-    body{
-        background: url('src/assets/food1.jpg') no-repeat ; 
-        background-attachment: fixed;
-        background-size:cover;
-        background-size: 100%  100%;
-        width:100%;
-        margin-top: -10px;
-        margin-bottom: -30px;
-        margin-left: -10px;
-        margin-right: -40px;
-        min-height: 100%; 
-      }
-
-      .radius{
-        border-radius: 20px;
-      }
-
-     
-      
     

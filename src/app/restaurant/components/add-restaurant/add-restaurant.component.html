@@ -1,44 +1,60 @@
-<div class="card" >
-    <p-card [style]="{
-        borderRadius: '15px', 
-        width: '700px', 
-        backgroundColor: 'rgba(255, 255, 255, 0.2)', 
-        color: 'black'}">
-    <div class="p-fluid grid"><h1>Register Your Restaurant</h1>
-        <form  [formGroup]="restaurantForm" (ngSubmit)="submit()">
-            <div class="field">
-                <label for="name" class="block">Name</label>
-                <input formControlName="name" type="text"  pInputText  />
-            </div><br>
-            <div class="field">
-                <label for="address" class="block">Address</label>
-                <input formControlName="address" type="text"  pInputText  />
+<br><br>
+<br><br>
+<h2 class="text-center">Register Your Restaurant</h2><br>
+<div class="container">
+    <form [formGroup]="restaurantForm" class="form" (ngSubmit)="submit()">
+        <div class="row justify-content-center">
+            <div class="col-6 col-sm-6">
+                <div class="field">
+                    <label for="name" class="block"><b>Name</b></label>
+                    <input formControlName="name" type="text" class="form" pInputText />
+                </div>
             </div>
-            <div class="field">
-                <label for="restaurantId" class="block">Restaurant Owner</label>
-                <input formControlName="restaurantId" type="text"  pInputText  />
+            <div class="col-6 col-sm-6">
+                <div class="field">
+                    <label for="restaurantId" class="block"><b>Restaurant Owner</b></label>
+                    <input formControlName="restaurantId" class="form" type="text" pInputText />
+                    
+                </div>
             </div>
-<br>
-            <div class="field">
-                <label for="contactDetails" class="block">Contact Details</label>
-                <input  formControlName="contactDetails" type="text"  pInputText  />
+        </div><br>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="field">
+                    <label for="contactDetails" class="block"><b>Contact Details</b></label>
+                    <input formControlName="contactDetails" class="form" type="text" placeholder="email, phone number"
+                        pInputText />
+                </div>
             </div>
-<br>
-            <div >
-                <label for="logoUrl" class="block">Logo</label>
-                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" formControlName="logoUrl"
-                accept="image/*" >
-                <ng-template pTemplate="content">
-                    <ul *ngIf="uploadedFiles.length">
-                        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                    </ul>
-                </ng-template>
-        </p-fileUpload>
+            <div class="col-6">
+                <div class="field">
+                    <label for="address" class="form" class="block"><b>Address Details</b></label>
+                    <textarea formControlName="address" class="form" pInputTextarea></textarea>
+                </div>
             </div>
-            <button pButton pRipple type="submit" label="Create" class="p-button-rounded"></button>&nbsp;
-            <button pButton pRipple type="button" routerLink="/home" labe="No Account?"   class="p-button-text"><b> Home</b></button>
+        </div>
+        <br>
+        <div class="row justify-content-start">
+            <div class="col-6">
+                <div class="field" >
+                    <label for="logoUrl" class="block"><b>Logo</b></label>
+                  <p-fileUpload name="myfile[]"  [customUpload]="true" (uploadHandler)="myUploader($event)"
+                         accept="image/*" [maxFileSize]="1000000">
+                        <ng-template pTemplate="content" >
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+            </div>
+            <div class="col-6 mt-5">
+                <div class="field">
+                    <button pButton pRipple type="submit" label="Save" (click)="showError()" ></button>&nbsp;
+                    <button pButton pRipple type="reset" routerLink="/" labe="No Account?" label="Cancel"
+                        class=" p-button-danger"><b></b></button>
+                </div>
+            </div>
+        </div>
     </form>
-    </div><br>
-   
-    </p-card>   
-    </div>
+</div>

@@ -40,23 +40,17 @@
     transform: translate(-50%, -50%);
   }
 
-  /* *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
+  
 
 body,html{
-    margin: 0;
-    padding: 0;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: sans-serif;
 }
 .Section_top{
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: 100vh;
+    /* overflow: hidden; */
     position: relative;
     background-image: url(src/assets/food.jpg);
     background-position: center;

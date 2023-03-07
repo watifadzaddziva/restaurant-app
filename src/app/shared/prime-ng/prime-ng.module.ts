@@ -19,8 +19,10 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
-
-
+import {FieldsetModule} from 'primeng/fieldset';
+import {StepsModule} from 'primeng/steps';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CarouselModule} from 'primeng/carousel';
 
 
 
@@ -47,7 +49,11 @@ import {ToastModule} from 'primeng/toast';
     FileUploadModule,
     DataViewModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    FieldsetModule,
+    StepsModule,
+    InputTextareaModule,
+    CarouselModule
 
 
     

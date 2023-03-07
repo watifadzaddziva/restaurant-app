@@ -1,30 +1,43 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { DefaultService } from 'src/app/shared/default.service';
 
 @Component({
   selector: 'app-set-food-item',
   templateUrl: './set-food-item.component.html',
   styleUrls: ['./set-food-item.component.css']
 })
-export class SetFoodItemComponent {
+export class SetFoodItemComponent  implements OnInit{
 
   displayPosition!: boolean;
   uploadedFiles: any[] = []; 
   position!: string;
-addForm!: FormGroup
-  items!:[
-    {label:'available', value:'available'},
-    {label:'unavailable', value:'unavailable'},
+  addForm!: FormGroup
+ 
+  constructor(private messageService: MessageService,private defaultService: DefaultService,
+    private fb: FormBuilder ) {}
+  
+  ngOnInit(): void {
+   
+    this.addForm= this.fb.group({
+      price: ['', [Validators.required]],
+      dishName: ['', [Validators.required]],
+      restaurantId: ['', [Validators.required]],
+      imageUrl: ['', [Validators.required]],
+    })
+  }
 
-  ];
-  option = [
-    {name: 'Unavailable'},
-    {name: 'Available'},
-    
-];
 
-  constructor(private messageService: MessageService, ) {}
+  submit(){
+    if(this.addForm.invalid){
+      this.defaultService.createMenu(this.addForm.value).subscribe((res)=>{
+    alert('success')
+    console.log(res)
+      })
+    }
+  }
+
 
   showPositionDialog(position: string) {
     this.position = position;
@@ -41,6 +54,3 @@ onUpload(event: any) {
 
 }
 
-export class City{
-
-}

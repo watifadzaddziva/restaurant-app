@@ -1,11 +1,13 @@
 <body>
-<div class="card" >
+    <div class="Section_top">
+        <div class="content">    
+<div ><br>
 <p-card  [style]="{
     borderRadius: '15px', 
-    width: '500px', 
+    width: '650px', 
     backgroundColor: 'rgba(255, 255, 255, 0.2)', 
     color: 'black'}">
-<div class="p-fluid grid"><h1>Registration</h1>
+<div class="p-fluid grid"><h1 style="color:brown">Registration</h1>
     <form [formGroup]='registration' (ngSubmit)='submitForm()'>
         <div >
             <span class="p-float-label">
@@ -50,20 +52,22 @@
 <div>
     <h3 style="color:black">Register As </h3>
     <label style="color:black; ">
-        <input  type="radio" formControlName="userType" class="form-control"
+        <input  type="radio" formControlName="userType" 
           value="Restaurant" required>Restaurant
   </label>&nbsp;&nbsp;
   
   <label style="color:black">
-        <input type="radio"  formControlName="userType" class="form-control"
+        <input type="radio"  formControlName="userType" 
         value="Customer" required> Customer
   </label>
 </div> <br>
 <button pButton pRipple type="submit" label="Register" [disabled]="registration.invalid"   ></button>
-<p>
-<button pButton pRipple type="button" routerLink="/login"  label=" Back To Login"  class="p-button-text"><b></b></button></p>
-</form>
+</form><br>
 </div>
+<button pButton pRipple type="button"  routerLink="/"  label=" Home" ><b> </b></button>&nbsp;
+<button pButton pRipple type="button"  routerLink="/login"  label=" Back To Login" ><b></b></button>
 </p-card>   
-</div><br><br>
+</div>
+</div>
+</div>
 </body>
