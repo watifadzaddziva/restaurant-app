@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+// import { registerLocaleData } from '@angular/common';
+// import en from '@angular/common/locales/en';
+
+// registerLocaleData(en);
 
 
 @NgModule({
@@ -34,7 +38,7 @@ import { MessageService } from 'primeng/api';
     
 
   ],
-  providers: [MessageService],
+  providers: [MessageService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

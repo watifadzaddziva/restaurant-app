@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  baseUrl= 'http://192.168.10.146:8100';
+  baseUrl= 'http://192.168.10.146:8001';
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class AuthService {
 }
       
   registerUserFromServer(user :any):Observable<any>{ 
-    return this.http.post<any>(`${this.baseUrl}/userRegistration/register`,user);
+    return this.http.post<any>(`${this.baseUrl}/register`,user);
   }
 }
 

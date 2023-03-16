@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DefaultService {
 
-  baseUrl= 'http://192.168.10.146:8100';
+  baseUrl= 'http://192.168.10.146:8001';
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,10 @@ export class DefaultService {
 }
 
 createMenu(data: any): Observable<any>{
-return this.http.post<any>(`${this.baseUrl}/restaurant/create-menu`, data)
+return this.http.post<any>(`${this.baseUrl}/dish/create-menu`, data)
+}
+
+getAllRestaurants(): Observable<any>{
+return  this.http.get(`${this.baseUrl}/restaurant/get-Allrestaurants`)
 }
 }

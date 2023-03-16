@@ -1,13 +1,13 @@
 <body>
     <div class="Section_top">
         <div class="content">    
-<div ><br>
+<div ><br><br><br>
 <p-card  [style]="{
     borderRadius: '15px', 
     width: '650px', 
     backgroundColor: 'rgba(255, 255, 255, 0.2)', 
     color: 'black'}">
-<div class="p-fluid grid"><h1 style="color:brown">Registration</h1>
+<div class="p-fluid grid"><h1 >Registration</h1>
     <form [formGroup]='registration' (ngSubmit)='submitForm()'>
         <div >
             <span class="p-float-label">
@@ -44,20 +44,26 @@
     </div><br>
     <!-- <div >
         <span class="p-float-label">
-            <p-password formControlName="confirmPassword"  [toggleMask]="true" inputId="Confirmpassword" ></p-password>
-            <label for="Confirmpassword">Confirm Password</label>
+            <p-password formControlName="confirmPassword"  [toggleMask]="true" inputId="confirmPassword" ></p-password>
+            <label for="confirmPassword">Confirm Password</label>
+            <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  Two passwords that you enter is inconsistent!
+                </ng-container>
+              </ng-template>
         </span>
     </div> -->
 
 <div>
     <h3 style="color:black">Register As </h3>
     <label style="color:black; ">
-        <input  type="radio" formControlName="userType" 
+        <input  type="radio" formControlName="usertype" 
           value="Restaurant" required>Restaurant
   </label>&nbsp;&nbsp;
   
   <label style="color:black">
-        <input type="radio"  formControlName="userType" 
+        <input type="radio"  formControlName="usertype" 
         value="Customer" required> Customer
   </label>
 </div> <br>

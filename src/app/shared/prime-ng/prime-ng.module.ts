@@ -23,7 +23,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {StepsModule} from 'primeng/steps';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CarouselModule} from 'primeng/carousel';
-
+import {PaginatorModule} from 'primeng/paginator';
+import {TableModule} from 'primeng/table';
 
 
 
@@ -53,7 +54,10 @@ import {CarouselModule} from 'primeng/carousel';
     FieldsetModule,
     StepsModule,
     InputTextareaModule,
-    CarouselModule
+    CarouselModule,
+    PaginatorModule,
+    TableModule
+   
 
 
     

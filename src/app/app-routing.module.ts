@@ -9,6 +9,7 @@ const routes: Routes = [
   {path : 'welcome', component:WelcomeComponent},
   {path: 'login', component:LoginComponent},
   {path : 'register', component:RegisterComponent},
+  {path: 'customer', loadChildren:()=>import ('./customer/customer.module').then(m=>m.CustomerModule)},
   {path : 'home', loadChildren:()=>import ('./restaurant/restaurant.module').then(m=>m.RestaurantModule) },
 ];
 

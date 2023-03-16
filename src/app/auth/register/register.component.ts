@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,23 +11,23 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  // registration= new FormGroup({})
+  registration!: FormGroup
 
   constructor(private fb : FormBuilder,private router: Router,
+    private messageService: MessageService,
     private authService : AuthService){}
 
-    registration= new FormGroup({
-      name:new FormControl(''),
-      lastname:new FormControl('') ,
-      username:new FormControl('') ,
-      email:new FormControl('') ,
-      password:new FormControl('') ,
-      // confirmPassword:['', [Validators.required]] ,
-      userType:new FormControl('') ,
+  ngOnInit(): void {
+    this.registration= this.fb.group({
+      name:['', [Validators.required]] ,
+      lastname:['', [Validators.required]] ,
+      username:['', [Validators.required]]  ,
+      email:['', [Validators.required]]  ,
+      password:['', [Validators.required]]  ,
+      // confirmPassword:['', [Validators.required,,this.confirmationValidator]] ,
+      usertype:['', [Validators.required]] ,
   
      })
-  
-  ngOnInit(): void {
   }
 
   submitForm(){
@@ -34,17 +35,30 @@ export class RegisterComponent implements OnInit {
     if (this.registration.valid) {
       this.authService.registerUserFromServer(this.registration.value).subscribe((res)=>{
         console.log(this.registration.value)
+        this.messageService.add({severity: 'success', summary: 'registered successfully', detail: ''});
         this.router.navigate(['/login'])   
+      },err=>{
+        this.messageService.add({severity: 'error', summary: 'error while saving', detail: ''});
+
       })
       
-    } else {
-      Object.values(this.registration.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
     }
-  }
+ 
+    }
+
+    updateConfirmValidator(): void {
+      /** wait for refresh value */
+      Promise.resolve().then(() => this.registration.controls['confirmPassword'].updateValueAndValidity());
+    }
+  
+  
+    confirmationValidator = (control: UntypedFormControl): { [s: string]: boolean } => {
+      if (!control.value) {
+        return { required: true };
+      } else if (control.value !== this.registration.controls['password'].value) {
+        return { confirm: true, error: true };
+      }
+      return {};
+    };
 
 }

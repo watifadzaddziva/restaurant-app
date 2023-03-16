@@ -27,20 +27,17 @@ export class LoginComponent implements OnInit {
   submitForm(){
     if (this.loginForm.valid) {
       this.authService.loginUserFromServer(this.loginForm.value).subscribe((res)=>{
+        let tok= res.token +"";
+        let userData: {};
+        userData= res
+        sessionStorage.setItem('user_data', JSON.stringify((userData)))
         this.router.navigate(['/home'])
-
-        
-      },err=>{
-        this.messageService.add({severity:'error', detail:'bad credentials'})
-      })
+      console.log(res);
       
-    } else {
-      Object.values(this.loginForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
+      },err=>{
+        this.messageService.add({severity:'error', detail:'bad credentials!!!'})
+      })
+      ;
     }
   }
 

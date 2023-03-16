@@ -14,7 +14,7 @@ export class SetFoodItemComponent  implements OnInit{
   uploadedFiles: any[] = []; 
   position!: string;
   addForm!: FormGroup
- 
+  imageUrl:any;
   constructor(private messageService: MessageService,private defaultService: DefaultService,
     private fb: FormBuilder ) {}
   
@@ -31,9 +31,17 @@ export class SetFoodItemComponent  implements OnInit{
 
   submit(){
     if(this.addForm.invalid){
-      this.defaultService.createMenu(this.addForm.value).subscribe((res)=>{
-    alert('success')
-    console.log(res)
+      const dataTosend = this.addForm.value
+      const tokenData=JSON.parse(sessionStorage.getItem('user_data') ?? '{}')  
+    dataTosend.restaurantId= tokenData.id
+      dataTosend.imageUrl= this.imageUrl
+      this.defaultService.createMenu(dataTosend).subscribe((res)=>{
+        console.log(res)
+  this.messageService.add({severity: 'success', summary: 'Saved Successfully', detail: ''});
+      },
+      err=>{
+        this.messageService.add({severity: 'error', summary: 'error while saving data', detail: ''});
+
       })
     }
   }
@@ -44,13 +52,16 @@ export class SetFoodItemComponent  implements OnInit{
     this.displayPosition = true;
 }
 
-onUpload(event: any) {
-    for(let file of event.files) {
-        this.uploadedFiles.push(file);
-    }
 
-    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+onUpload(event:any) {
+  for(let file of event.files) {
+      this.uploadedFiles.push(file);
+      console.log(file);
+    this.imageUrl = event.originalEvent.body.location;
+      
+  }
+
+  this.messageService.add({severity: 'success', summary: 'File Uploaded', detail: ''});
 }
-
 }
 

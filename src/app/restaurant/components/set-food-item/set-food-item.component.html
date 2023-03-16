@@ -16,20 +16,21 @@
                     <p-inputNumber formControlName="price"  [showButtons]="true" inputId="currency-us" mode="currency" currency="USD" locale="en-US">
                     </p-inputNumber>
                 </div><br>
-                <div class="field">
+                <!-- <div class="field">
                     <label for="restaurantId" class="block">Restaurant</label>
                     <input formControlName="restaurantId" type="number"  pInputText  />
-                </div><br>
-                <div >
-                    <label for="address" class="block">Image</label>
-                    <p-fileUpload name="demo[]" url="./upload.php" formControlName="imageUrl" (onUpload)="onUpload($event)"
-                    accept="image/*" >
-                    <ng-template pTemplate="content">
-                        <ul *ngIf="uploadedFiles.length">
-                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                        </ul>
-                    </ng-template>
-            </p-fileUpload>
+                </div><br> -->
+                <div class="field" >
+                    <label  class="block"><b>Image</b></label>
+                  <p-fileUpload  url="http://192.168.10.146:8001/file/upload" name="file"
+                  (onUpload)="onUpload($event)"
+                         accept="image/*" [maxFileSize]="1000000">
+                        <ng-template pTemplate="content" >
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
                 </div><br>
                 <button pButton pRipple type="submit" label="Add" ></button>&nbsp;
         </form>
